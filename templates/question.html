@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}回答する - 逆質問箱{% endblock %}
 {% block content %}
-<section class="hero small">
+<section class="hero small centered">
   <p class="eyebrow">こんな質問が届いています</p>
   <h1 class="question-text">{{ question.text }}</h1>
 </section>
@@ -11,7 +11,7 @@
   <textarea id="answer" name="answer" maxlength="1000" rows="4" required></textarea>
 
   <label for="name">名前(任意・空欄なら「名無しさん」)</label>
-  <input type="text" id="name" name="name" maxlength="50" placeholder="例:たろう">
+  <input type="text" id="name" name="name" maxlength="50" placeholder="例:きなこ">
 
   <button type="submit">回答を送る →</button>
 </form>

@@ -6,4 +6,9 @@
   <h1>回答を送りました</h1>
   <p class="lede">「{{ question.text }}」への回答が、質問した人に届きました。</p>
 </section>
+
+<div class="card cta-card">
+  <p class="cta-text">あなたも質問してみませんか？</p>
+  <a class="cta-button" href="{{ url_for('index') }}">自分も質問箱を作ってみる →</a>
+</div>
 {% endblock %}

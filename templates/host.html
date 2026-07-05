@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}管理ページ - 逆質問箱{% endblock %}
+{% block content %}
+<section class="host-header">
+  <p class="eyebrow">あなたの質問箱(管理用ページ)</p>
+  <h1 class="question-text">{{ question.text }}</h1>
+</section>
+
+<div class="card share-card">
+  <p class="share-label">この URL をSNSやDMで配ってください</p>
+  <div class="share-row">
+    <input type="text" readonly value="{{ public_url }}" id="publicUrl" onclick="this.select()">
+    <button type="button" onclick="copyUrl()">コピー</button>
+  </div>
+  <p class="warn">⚠️ このページのURL(ブラウザのアドレスバー)は、回答を見るための<strong>あなた専用の鍵</strong>です。他人に共有しないでください。</p>
+</div>
+
+<section class="answers">
+  <p class="answers-count">{{ answers|length }} 件の回答</p>
+  {% if answers %}
+    {% for a in answers %}
+    <article class="postcard">
+      <p class="postcard-text">{{ a.text }}</p>
+      <p class="postcard-meta">
+        {{ a.name if a.name else "名無しさん" }}
+        ・{{ a.created_at.strftime("%Y/%m/%d %H:%M") }}
+      </p>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p class="empty">まだ回答はありません。URLを配って待ちましょう。</p>
+  {% endif %}
+</section>
+
+<script>
+function copyUrl() {
+  const el = document.getElementById('publicUrl');
+  el.select();
+  navigator.clipboard.writeText(el.value);
+}
+</script>
+{% endblock %}

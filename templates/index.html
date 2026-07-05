@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}質問を出す - 逆質問箱{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">質問箱の、逆。</p>
+  <h1>あなたが問い、<br>みんなが答える。</h1>
+  <p class="lede">
+    質問を1つ書くと、専用のURLが2つ発行されます。<br>
+    1つは<strong>あなただけの管理用URL</strong>(回答が届く場所)、<br>
+    もう1つは<strong>みんなに配る回答用URL</strong>です。<br>
+    アカウント登録もログインも不要。
+  </p>
+</section>
+
+<form class="card form-card" method="POST" action="{{ url_for('create_question') }}">
+  <label for="question">投げかける質問</label>
+  <textarea id="question" name="question" maxlength="500" rows="3"
+    placeholder="例:最近ハマっていることを教えてください" required></textarea>
+  <button type="submit">質問箱を作る →</button>
+</form>
+{% endblock %}
